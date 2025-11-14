@@ -86,22 +86,51 @@ body {
 
 .card {
     background-color: #F8F8FF;
-    width: 288px;
+    width: 280px;
     padding: 32px 16px;
     text-align: center;
-    border-radius: 25px;
+    border-radius: 20px;
     box-shadow: 4px 4px 17px -4px #0B1215;
-        position: sticky;
-    top: 0;
-    z-index: 2;
-    background: transparent;
-    backdrop-filter: blur(5px);
 }
 
 .card button {
     margin-top: 48px;
 }
 
-.glide__slide img {
-    object-fit: fit;
+.ofertas {
+    background-color: #F8F8FF;
+    text-align: center;
+    padding: 48px 104px;
+}
+
+.ofertas-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    justify-items: center;
+}
+
+.produtos {
+    background-color: #F8F8FF;
+    text-align: center;
+    padding: 48px 104px;
+}
+
+.produtos-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    justify-items: center;
+}
+
+.rodape {
+    background-color: #0066CC;
+    padding: 32px 104px;
+    justify-content: center;
+    display: flex;
+
+}
+
+.rodape img {
+    filter: brightness(0) invert(1);
 }

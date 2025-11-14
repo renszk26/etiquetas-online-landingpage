@@ -43,20 +43,45 @@
     </article>
 
     <article class="marketplace-cards">
-        <h3>Marketplaces</h3>
+        <h2 style="margin-bottom: 24px;">Marketplaces</h2>
         <section style="display: flex; gap: 64px; justify-content: center;">
-        <div class="card">
-            <img src="assets/ML.png" alt="" width="100%">
-            <button class="comprar" style="background-color: #0066CC;"><a style="color: #F8F8FF;" href="">ONDE
-                    COMPRAR</a></button>
-        </div>
-        <div class="card">
-            <img src="assets/SH.png" alt="" width="100%">
-            <button class="comprar" style="background-color: #0066CC;"><a style="color: #F8F8FF;" href="">ONDE
-                    COMPRAR</a></button>
-        </div>
+            <div class="card">
+                <img src="assets/ML.png" alt="" width="100%">
+                <button class="comprar" style="background-color: #0066CC;"><a style="color: #F8F8FF;" href="">ONDE
+                        COMPRAR</a></button>
+            </div>
+            <div class="card">
+                <img src="assets/SH.png" alt="" width="100%">
+                <button class="comprar" style="background-color: #0066CC;"><a style="color: #F8F8FF;" href="https://shopee.com.br/etiquetasonline">ONDE
+                        COMPRAR</a></button>
+            </div>
         </section>
     </article>
+
+    <article class="ofertas">
+        <h2 style="margin-bottom: 24px;">Ofertas da semana!</h2>
+        <section class="ofertas-cards">
+            <!-- Ofertas serão inseridos via JavaScript -->
+        </section>
+    </article>
+
+    <article class="produtos">
+        <h2 style="margin-bottom: 24px;">Produtos</h2>
+        <section class="produtos-cards">
+
+        </section>
+    </article>
+    <footer class="rodape">
+        <section>
+        <img src="assets/logo.png" alt="" height="64px">
+        <hr>
+        <p>© 2024 Etiquetas Online. Todos os direitos reservados.</p>
+        </section>
+    </footer>
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
     <script>
         const config = {
@@ -69,6 +94,11 @@
         }
         new Glide('.glide', config).mount()
     </script>
+
+    <script src="js/ofertas.js"></script>
+    <script src="js/produtos.js"></script>
+
+
 
     <script>
         window.onscroll = function () { myFunction() };
