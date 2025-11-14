@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+    font-family: "Inter", sans-serif;
+}
+
+img {
+    display: block;
+}
+
+body {
+    background-color: #0066CC;
+}
+
+.cabeca {
+    background-color: #0066CC;
+    padding: 24px 104px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: transparent;
+    backdrop-filter: blur(5px);
+}
+
+.logo {
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.menu li {
+    display: flex;
+    gap: 48px;
+}
+
+.menu a {
+    color: white;
+    font-weight: 600;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.menu a:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+    text-decoration: underline;
+}
+
+.comprar {
+    background-color: #FFC901;
+    padding: 16px 32px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.comprar:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.comprar a {
+    color: #0B1215;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.marketplace-cards {
+    background-color: #FFC901;
+    justify-content: center;
+    padding: 32px 104px;
+    text-align: center;
+}
+
+.card {
+    background-color: #F8F8FF;
+    width: 288px;
+    padding: 32px 16px;
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 4px 4px 17px -4px #0B1215;
+        position: sticky;
+    top: 0;
+    z-index: 2;
+    background: transparent;
+    backdrop-filter: blur(5px);
+}
+
+.card button {
+    margin-top: 48px;
+}
+
+.glide__slide img {
+    object-fit: fit;
+}
