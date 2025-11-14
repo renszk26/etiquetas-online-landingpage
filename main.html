@@ -1,11 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etiquetas Online</title>
+    <link rel="stylesheet" href="css/sytle.css">
+    <link rel="stylesheet" href="css/glide.core.min.css">
+    <link rel="stylesheet" href="css/glide.theme.min.css">
 </head>
+
 <body>
-    
+    <header class="cabeca" id="myHeader">
+        <img class="logo" src="assets/logo.png" alt="" height="56px">
+        <nav>
+            <ul class="menu">
+                <li>
+                    <a href="">Início</a>
+                    <a href="">Ofertas</a>
+                    <a href="">Produtos</a>
+                    <a href="">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <button class="comprar"><a href="">ONDE COMPRAR</a></button>
+    </header>
+
+    <article class="carrosel">
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide"><img src="assets/É Hoje!.png" alt="" width="100%"></li>
+                    <li class="glide__slide"><img src="assets/2.png" alt="" width="100%"></li>
+                    <li class="glide__slide"><img src="assets/3.png" alt="" width="100%"></li>
+                </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">Anterior</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">Próximo</button>
+            </div>
+        </div>
+    </article>
+
+    <article class="marketplace-cards">
+        <h3>Marketplaces</h3>
+        <section style="display: flex; gap: 64px; justify-content: center;">
+        <div class="card">
+            <img src="assets/ML.png" alt="" width="100%">
+            <button class="comprar" style="background-color: #0066CC;"><a style="color: #F8F8FF;" href="">ONDE
+                    COMPRAR</a></button>
+        </div>
+        <div class="card">
+            <img src="assets/SH.png" alt="" width="100%">
+            <button class="comprar" style="background-color: #0066CC;"><a style="color: #F8F8FF;" href="">ONDE
+                    COMPRAR</a></button>
+        </div>
+        </section>
+    </article>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script>
+        const config = {
+            type: 'carousel',
+            perView: 1,
+            autoplay: 6000,
+            hoverpause: true,
+            animationDuration: 1000,
+            gap: 0,
+        }
+        new Glide('.glide', config).mount()
+    </script>
+
+    <script>
+        window.onscroll = function () { myFunction() };
+
+        var header = document.getElementsByClassName("cabeca");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
+        }
+    </script>
 </body>
+
+
 </html>
