@@ -23,7 +23,7 @@
                 </li>
             </ul>
         </nav>
-        <button class="comprar"><a href="">ONDE COMPRAR</a></button>
+        <button class="comprar" style="outline-style: solid; background-color: ;"><a href="">ONDE COMPRAR</a></button>
     </header>
 
     <article class="carrosel">
@@ -52,7 +52,8 @@
             </div>
             <div class="card">
                 <img src="assets/SH.png" alt="" width="100%">
-                <button class="comprar" style="background-color: #0066CC;"><a style="color: #F8F8FF;" href="https://shopee.com.br/etiquetasonline">ONDE
+                <button class="comprar" style="background-color: #0066CC;"><a style="color: #F8F8FF;"
+                        href="https://shopee.com.br/etiquetasonline">ONDE
                         COMPRAR</a></button>
             </div>
         </section>
@@ -71,16 +72,36 @@
 
         </section>
     </article>
+
+    <article class="contato">
+        <div style="width: 50%;">
+            <h3>Contato</h3>
+            <h4>Por favor, contate-nos para mais informações.</h4>
+        </div>
+
+        <section class="mensagem">
+            <form id="formContato">
+                <input type="text" id="nome" name="nome" placeholder="Nome completo*" required>
+
+                <input type="email" id="email" name="email" placeholder="E-mail*" required>
+
+                <textarea id="mensagem" name="mensagem" rows="6" placeholder="Sua mensagem*" required></textarea>
+
+                <button type="submit" class="comprar"><a href="">Enviar</a></button>
+            </form>
+
+            <p id="statusMsg" style="color: white; margin-top: 16px;"></p>
+        </section>
+    </article>
+
+
     <footer class="rodape">
-        <section>
-        <img src="assets/logo.png" alt="" height="64px">
-        <hr>
-        <p>© 2024 Etiquetas Online. Todos os direitos reservados.</p>
+        <section style="width: 100%; text-align: center;">
+            <img style="margin-left: auto; margin-right: auto;" src="assets/logo.png" alt="" height="64px">
+            <hr style="margin: 16px 0px;">
+            <p style="color: #F8F8FF;">© 2025 Etiquetas Online. Todos os direitos reservados.</p>
         </section>
     </footer>
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
     <script>
@@ -97,7 +118,8 @@
 
     <script src="js/ofertas.js"></script>
     <script src="js/produtos.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="js/contato.js"></script>
 
 
     <script>
