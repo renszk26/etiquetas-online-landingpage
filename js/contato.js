@@ -1,27 +1,38 @@
+// js/contato.js
+
 // Inicializa o EmailJS
-emailjs.init("SEU_PUBLIC_KEY_AQUI"); // Substitua pelo seu PUBLIC KEY
+// Substitua "SEU_PUBLIC_KEY_AQUI" pelo seu PUBLIC KEY real do EmailJS
+emailjs.init("SEU_PUBLIC_KEY_AQUI");
 
 const form = document.getElementById("formContato");
 const msgStatus = document.getElementById("statusMsg");
 
-form.addEventListener("submit", function (e) {
-    e.preventDefault();
+if (form) {
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    msgStatus.textContent = "Enviando...";
+        msgStatus.textContent = "Enviando mensagem...";
+        const params = {
+            nome: document.getElementById("nome").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            mensagem: document.getElementById("mensagem").value.trim()
+        };
 
-    const params = {
-        nome: document.getElementById("nome").value,
-        email: document.getElementById("email").value,
-        mensagem: document.getElementById("mensagem").value
-    };
+        // Validação simples extra (além do required no HTML)
+        if (!params.nome || !params.email || !params.mensagem) {
+            msgStatus.textContent = "Por favor, preencha todos os campos obrigatórios.";
+            return;
+        }
 
-    emailjs.send("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", params)
-        .then(() => {
-            msgStatus.textContent = "Mensagem enviada com sucesso!";
-            form.reset();
-        })
-        .catch((err) => {
-            msgStatus.textContent = "Erro ao enviar. Tente novamente.";
-            console.error("ERRO:", err);
-        });
-});
+        emailjs
+            .send("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", params)
+            .then(() => {
+                msgStatus.textContent = "Mensagem enviada com sucesso!";
+                form.reset();
+            })
+            .catch((err) => {
+                console.error("ERRO:", err);
+                msgStatus.textContent = "Erro ao enviar. Tente novamente mais tarde.";
+            });
+    });
+}

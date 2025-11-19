@@ -1,3 +1,5 @@
+// js/produtos.js
+
 // Lista dos produtos (adicione, remova ou edite aqui)
 const produtos = [
     {
@@ -77,17 +79,21 @@ const produtos = [
 // Função para montar os cards dinamicamente
 function carregarProdutos() {
     const container = document.querySelector(".produtos-cards");
+    if (!container) return;
+
     container.innerHTML = "";
 
-    produtos.forEach(prod => {
-        const card = document.createElement("div");
+    produtos.forEach((prod) => {
+        const card = document.createElement("article");
         card.classList.add("card");
-        card.style.textAlign = "left";
+        card.setAttribute("aria-label", `Produto: ${prod.descricao}`);
 
         card.innerHTML = `
-            <img src="${prod.img}" alt="" height="201px" width="100%">
+            <img src="${prod.img}"
+                 alt="Imagem ilustrativa do produto: ${prod.descricao}"
+                 class="img-responsiva">
             <h3>${prod.preco}</h3>
-            <h5 style="color: #00A650;">${prod.parcelamento}</h5>
+            <p style="color:#00A650; font-weight:600;">${prod.parcelamento}</p>
             <p>${prod.descricao}</p>
         `;
 

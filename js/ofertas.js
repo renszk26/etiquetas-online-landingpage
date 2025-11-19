@@ -1,3 +1,5 @@
+// js/ofertas.js
+
 // Lista de produtos (adicione, remova ou edite aqui)
 const ofertas = [
     {
@@ -29,16 +31,24 @@ const ofertas = [
 // Função para montar os cards dinamicamente
 function carregarOfertas() {
     const container = document.querySelector(".ofertas-cards");
-    container.innerHTML = ""; // limpa cards existentes
+    if (!container) return;
 
-    ofertas.forEach(produto => {
-        const card = document.createElement("div");
+    container.innerHTML = "";
+
+    ofertas.forEach((produto) => {
+        const card = document.createElement("article");
         card.classList.add("card");
-        card.style.textAlign = "left";
+        card.setAttribute("aria-label", `Oferta: ${produto.descricao}`);
 
         card.innerHTML = `
-            <img src="${produto.img}" alt="" height="201px" width="100%">
-            <h5 style="color: #00A650; text-decoration: line-through;">${produto.precoAntigo}</h5>
+            <img src="${produto.img}"
+                 alt="Imagem ilustrativa do produto: ${produto.descricao}"
+                 class="img-responsiva">
+            <p>
+                <span style="color:#00A650; text-decoration: line-through;">
+                    ${produto.precoAntigo}
+                </span>
+            </p>
             <h3>${produto.precoAtual}</h3>
             <p>${produto.descricao}</p>
         `;

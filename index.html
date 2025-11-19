@@ -1,142 +1,172 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etiquetas Online</title>
+
+    <!-- CSS principal -->
     <link rel="stylesheet" href="css/sytle.css">
+
+    <!-- Glide.js (carousel) -->
     <link rel="stylesheet" href="css/glide.core.min.css">
     <link rel="stylesheet" href="css/glide.theme.min.css">
 </head>
 
 <body>
-    <header class="cabeca" id="myHeader">
-        <img class="logo" src="assets/logo.png" alt="" height="56px">
-        <nav>
-            <ul class="menu">
-                <li>
-                    <a href="">Início</a>
-                    <a href="">Ofertas</a>
-                    <a href="">Produtos</a>
-                    <a href="">Contato</a>
-                </li>
-            </ul>
-        </nav>
-        <button class="comprar" style="outline-style: solid; background-color: ;"><a href="">ONDE COMPRAR</a></button>
+    <!-- Link para pular direto ao conteúdo (WCAG) -->
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+    <header class="cabeca" id="topo">
+        <div class="header-inner">
+            <a href="#topo" class="logo-link">
+                <img class="logo" src="assets/logo.png" alt="Logo Etiquetas Online" height="56">
+            </a>
+
+            <button class="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false"
+                aria-controls="menu-principal">
+                ☰
+            </button>
+
+            <nav class="navegacao" aria-label="Navegação principal">
+                <ul class="menu" id="menu-principal">
+                    <li><a href="#topo">Início</a></li>
+                    <li><a href="#ofertas">Ofertas</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+
+            <a class="comprar btn-primaria" href="#marketplaces">
+                Onde comprar
+            </a>
+        </div>
     </header>
 
-    <article class="carrosel">
-        <div class="glide">
-            <div class="glide__track" data-glide-el="track">
-                <ul class="glide__slides">
-                    <li class="glide__slide"><img src="assets/É Hoje!.png" alt="" width="100%"></li>
-                    <li class="glide__slide"><img src="assets/2.png" alt="" width="100%"></li>
-                    <li class="glide__slide"><img src="assets/3.png" alt="" width="100%"></li>
-                </ul>
+    <main id="conteudo-principal">
+        <!-- CARROSSEL -->
+        <article class="carrosel" aria-label="Banner de ofertas e destaques">
+            <div class="glide">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        <li class="glide__slide">
+                            <img src="assets/É Hoje!.png" alt="Promoção especial, é hoje!" class="img-responsiva">
+                        </li>
+                        <li class="glide__slide">
+                            <img src="assets/2.png" alt="Destaque de produtos em etiquetas" class="img-responsiva">
+                        </li>
+                        <li class="glide__slide">
+                            <img src="assets/3.png" alt="Mais ofertas de etiquetas e ribbons" class="img-responsiva">
+                        </li>
+                    </ul>
+                </div>
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"
+                        aria-label="Slide anterior">Anterior</button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"
+                        aria-label="Próximo slide">Próximo</button>
+                </div>
             </div>
-            <div class="glide__arrows" data-glide-el="controls">
-                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">Próximo</button>
-                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">Próximo</button>
+        </article>
+
+        <!-- MARKETPLACES -->
+        <article class="marketplace-cards" id="marketplaces">
+            <div class="container">
+                <h2>Marketplaces</h2>
+                <section class="cards-row" aria-label="Canais de compra">
+                    <div class="card">
+                        <img src="assets/ML.png" alt="Logo Mercado Livre" class="img-responsiva">
+                        <a class="comprar btn-secundaria" href="#" aria-label="Onde comprar no Mercado Livre">
+                            Onde comprar
+                        </a>
+                    </div>
+                    <div class="card">
+                        <img src="assets/SH.png" alt="Logo Shopee" class="img-responsiva">
+                        <a class="comprar btn-secundaria" href="https://shopee.com.br/etiquetasonline"
+                            aria-label="Onde comprar na Shopee">
+                            Onde comprar
+                        </a>
+                    </div>
+                </section>
             </div>
-        </div>
-    </article>
+        </article>
 
-    <article class="marketplace-cards">
-        <h2 style="margin-bottom: 24px;">Marketplaces</h2>
-        <section style="display: flex; gap: 64px; justify-content: center;">
-            <div class="card">
-                <img src="assets/ML.png" alt="" width="100%">
-                <button class="comprar" style="background-color: #0066CC;"><a style="color: #F8F8FF;" href="">ONDE
-                        COMPRAR</a></button>
+        <!-- OFERTAS -->
+        <article class="ofertas" id="ofertas">
+            <div class="container">
+                <h2>Ofertas da semana!</h2>
+                <section class="ofertas-cards" aria-label="Lista de ofertas da semana">
+                    <!-- Ofertas carregadas via JS -->
+                </section>
             </div>
-            <div class="card">
-                <img src="assets/SH.png" alt="" width="100%">
-                <button class="comprar" style="background-color: #0066CC;"><a style="color: #F8F8FF;"
-                        href="https://shopee.com.br/etiquetasonline">ONDE
-                        COMPRAR</a></button>
+        </article>
+
+        <!-- PRODUTOS -->
+        <article class="produtos" id="produtos">
+            <div class="container">
+                <h2>Produtos</h2>
+                <section class="produtos-cards" aria-label="Lista de produtos">
+                    <!-- Produtos carregados via JS -->
+                </section>
             </div>
-        </section>
-    </article>
+        </article>
 
-    <article class="ofertas">
-        <h2 style="margin-bottom: 24px;">Ofertas da semana!</h2>
-        <section class="ofertas-cards">
-            <!-- Ofertas serão inseridos via JavaScript -->
-        </section>
-    </article>
+        <!-- CONTATO -->
+        <article class="contato" id="contato">
+            <div class="container contato-inner">
+                <section class="contato-texto">
+                    <h3>Contato</h3>
+                    <p>Por favor, contate-nos para mais informações sobre nossos produtos e serviços.</p>
+                </section>
 
-    <article class="produtos">
-        <h2 style="margin-bottom: 24px;">Produtos</h2>
-        <section class="produtos-cards">
+                <section class="mensagem" aria-label="Formulário de contato">
+                    <form id="formContato" novalidate>
+                        <div class="campo-form">
+                            <label for="nome">Nome completo*</label>
+                            <input type="text" id="nome" name="nome" autocomplete="name" required>
+                        </div>
 
-        </section>
-    </article>
+                        <div class="campo-form">
+                            <label for="email">E-mail*</label>
+                            <input type="email" id="email" name="email" autocomplete="email" required>
+                        </div>
 
-    <article class="contato">
-        <div style="width: 50%;">
-            <h3>Contato</h3>
-            <h4>Por favor, contate-nos para mais informações.</h4>
-        </div>
+                        <div class="campo-form">
+                            <label for="mensagem">Sua mensagem*</label>
+                            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                        </div>
 
-        <section class="mensagem">
-            <form id="formContato">
-                <input type="text" id="nome" name="nome" placeholder="Nome completo*" required>
+                        <button type="submit" class="comprar btn-primaria">
+                            Enviar
+                        </button>
 
-                <input type="email" id="email" name="email" placeholder="E-mail*" required>
-
-                <textarea id="mensagem" name="mensagem" rows="6" placeholder="Sua mensagem*" required></textarea>
-
-                <button type="submit" class="comprar"><a href="">Enviar</a></button>
-            </form>
-
-            <p id="statusMsg" style="color: white; margin-top: 16px;"></p>
-        </section>
-    </article>
-
+                        <p id="statusMsg" class="status-msg" role="status" aria-live="polite"></p>
+                    </form>
+                </section>
+            </div>
+        </article>
+    </main>
 
     <footer class="rodape">
-        <section style="width: 100%; text-align: center;">
-            <img style="margin-left: auto; margin-right: auto;" src="assets/logo.png" alt="" height="64px">
-            <hr style="margin: 16px 0px;">
-            <p style="color: #F8F8FF;">© 2025 Etiquetas Online. Todos os direitos reservados.</p>
-        </section>
+        <div class="container rodape-inner">
+            <img src="assets/logo.png" alt="Logo Etiquetas Online" height="64">
+            <hr>
+            <p>© <span id="currentYear"></span> Etiquetas Online. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
+    <!-- JS externos -->
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-    <script>
-        const config = {
-            type: 'carousel',
-            perView: 1,
-            autoplay: 6000,
-            hoverpause: true,
-            animationDuration: 1000,
-            gap: 0,
-        }
-        new Glide('.glide', config).mount()
-    </script>
 
     <script src="js/ofertas.js"></script>
     <script src="js/produtos.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script src="js/contato.js"></script>
 
-
-    <script>
-        window.onscroll = function () { myFunction() };
-
-        var header = document.getElementsByClassName("cabeca");
-        var sticky = header.offsetTop;
-
-        function myFunction() {
-            if (window.pageYOffset > sticky) {
-                header.classList.add("sticky");
-            } else {
-                header.classList.remove("sticky");
-            }
-        }
-    </script>
+    <!-- JS principal (responsividade, menu, carrossel, etc.) -->
+    <script src="js/main.js"></script>
 </body>
-
 
 </html>
