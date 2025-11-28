@@ -86,6 +86,8 @@ body {
 
 .logo {
     transition: transform 0.3s ease;
+    max-width: clamp(120px, 22vw, 180px);
+    height: auto;
 }
 
 .logo:hover {
@@ -122,9 +124,9 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 999px;
-    padding: 12px 24px;
+    padding: clamp(8px, 1.5vw, 12px) clamp(16px, 3vw, 24px);
     font-weight: 700;
-    font-size: 15px;
+    font-size: clamp(13px, 2.8vw, 15px);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
     text-align: center;
@@ -141,9 +143,19 @@ body {
     color: var(--branco);
 }
 
+
 .comprar:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.img-responsiva {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* evita imagens gigantes em telas pequenas */
+    max-height: clamp(160px, 40vw, 420px);
+    object-fit: contain;
 }
 
 /* Botão menu mobile */
@@ -199,15 +211,23 @@ body {
 .card {
     background-color: var(--branco);
     width: 100%;
-    max-width: 280px;
-    padding: 24px 16px;
+    max-width: clamp(200px, 42vw, 280px);
+    padding: clamp(16px, 3vw, 24px) clamp(12px, 2.5vw, 16px);
     text-align: center;
     border-radius: 20px;
     box-shadow: 4px 4px 17px -4px rgba(11, 18, 21, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
 }
-
 .card img {
     margin-bottom: 16px;
+    max-height: clamp(80px, 18vw, 140px);
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card .comprar {
@@ -226,6 +246,7 @@ body {
     gap: 24px;
     justify-items: center;
     margin-top: 16px;
+    align-items: start;
 }
 
 /* Produtos */
@@ -240,6 +261,7 @@ body {
     gap: 24px;
     justify-items: center;
     margin-top: 16px;
+    align-items: start;
 }
 
 /* CONTATO */
@@ -313,6 +335,19 @@ body {
     min-height: 20px;
 }
 
+.glide__arrow {
+    padding: clamp(4px, 1vw, 8px);
+    font-size: clamp(12px, 2.4vw, 14px);
+    border-radius: 999px;
+}
+
+.glide__slide img {
+    border-radius: 0;
+    max-height: clamp(220px, 50vw, 520px);
+    width: 100%;
+    object-fit: cover;
+}
+
 /* RODAPÉ */
 .rodape {
     background-color: var(--azul-principal);
@@ -378,6 +413,7 @@ body {
         gap: 16px;
     }
 
+    /* Aqui garantimos 2 colunas em tablets e celulares grandes */
     .ofertas-cards,
     .produtos-cards {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -388,7 +424,7 @@ body {
     }
 }
 
-/* Até 480px: 1 coluna de cards e padding menor */
+/* Até 480px: manter 2 colunas (celulares) e reduzir espaçamentos */
 @media (max-width: 480px) {
     .cabeca {
         padding-inline: 8px;
@@ -399,17 +435,36 @@ body {
     }
 
     .comprar {
-        padding: 10px 16px;
-        font-size: 14px;
+        padding: 8px 12px;
+        font-size: 13px;
     }
 
+    /* <-- Alteração importante: 2 colunas em celulares, conforme solicitado --> */
     .ofertas-cards,
     .produtos-cards {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 12px;
+        justify-items: stretch;
     }
 
-    .card {
+    /* Faz com que cada card ocupe toda a célula do grid e ajuste o conteúdo */
+    .ofertas-cards .card,
+    .produtos-cards .card {
         max-width: 100%;
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .card img {
+        max-height: 76px;
+        margin-bottom: 12px;
+    }
+
+    .card .comprar {
+        margin-top: 12px;
+        padding: 8px 12px;
+        font-size: 13px;
     }
 
     .marketplace-cards,
@@ -417,6 +472,27 @@ body {
     .produtos,
     .contato,
     .rodape {
-        padding: 32px 0;
+        padding: 24px 0;
+    }
+}
+
+/* Em telas muito estreitas, permitimos 1 coluna para evitar elementos muito amassados */
+@media (max-width: 320px) {
+    .ofertas-cards,
+    .produtos-cards {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .card {
+        padding: 10px;
+    }
+}
+
+/* Pequenos ajustes estéticos adicionais */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
     }
 }
