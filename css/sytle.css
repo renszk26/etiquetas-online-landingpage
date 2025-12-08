@@ -10,6 +10,7 @@
     font-family: "Inter", sans-serif;
 }
 
+
 :root {
     --azul-principal: #0066CC;
     --amarelo: #FFC901;
@@ -24,6 +25,65 @@
     outline-offset: 2px;
 }
 
+/* =========================================
+   MODO ALTO CONTRASTE (Acessibilidade)
+   ========================================= */
+
+body.alto-contraste {
+    /* Redefine as variáveis para o esquema Preto/Amarelo */
+    --azul-principal: #000000;  /* Fundo geral vira preto */
+    --branco: #000000;          /* Fundo dos cards vira preto */
+    --preto: #FFFF00;           /* Texto preto vira amarelo neon */
+    --amarelo: #FFFF00;         /* Amarelo fica mais "neon" */
+    
+    background-color: #000000;
+    color: #FFFF00;
+}
+
+/* Força a cor dos textos e links para Amarelo ou Branco */
+body.alto-contraste h1, 
+body.alto-contraste h2, 
+body.alto-contraste h3, 
+body.alto-contraste p, 
+body.alto-contraste a, 
+body.alto-contraste label {
+    color: #FFFF00 !important;
+}
+
+/* Adiciona bordas amarelas para separar elementos, 
+   já que tudo ficará com fundo preto */
+body.alto-contraste .card,
+body.alto-contraste .mensagem,
+body.alto-contraste header,
+body.alto-contraste footer,
+body.alto-contraste input,
+body.alto-contraste textarea {
+    border: 2px solid #FFFF00;
+    background-color: #000000 !important;
+}
+
+/* Ajuste específico para BOTÕES */
+body.alto-contraste .btn-primaria,
+body.alto-contraste .btn-secundaria {
+    background-color: #FFFF00 !important; /* Fundo amarelo */
+    color: #000000 !important;             /* Texto preto para leitura */
+    font-weight: 800;
+    border: 2px solid #FFFFFF !important;  /* Borda branca para destaque extra */
+}
+
+/* Ajuste para inputs de formulário */
+body.alto-contraste input,
+body.alto-contraste textarea {
+    color: #FFFF00;
+}
+
+/* Imagens e Logos: Opcional - inverte cores se necessário, 
+   ou mantém normal. Aqui deixei o logo visível. */
+body.alto-contraste .logo {
+    /* Filtro para garantir que o logo apareça bem no fundo preto */
+    filter: brightness(100%); 
+}
+
 body {
     background-color: var(--azul-principal);
     color: var(--preto);
@@ -36,8 +96,8 @@ body {
     left: 8px;
     top: -40px;
     padding: 8px 16px;
-    background-color: #000;
-    color: #fff;
+    background-color: var(--preto);
+    color: var(--branco);
     z-index: 1000;
     border-radius: 4px;
     font-size: 14px;
@@ -54,11 +114,6 @@ body {
     padding-inline: 16px;
 }
 
-.img-responsiva {
-    width: 100%;
-    height: auto;
-    display: block;
-}
 
 /* HEADER */
 .cabeca {
@@ -107,7 +162,7 @@ body {
 }
 
 .menu a {
-    color: #ffffff;
+    color: var(--branco);
     font-weight: 600;
     font-size: 16px;
     transition: transform 0.2s ease, text-decoration 0.2s ease;
@@ -162,7 +217,7 @@ body {
 .menu-toggle {
     display: none;
     background: transparent;
-    color: #ffffff;
+    color: var(--branco);
     font-size: 24px;
     cursor: pointer;
 }

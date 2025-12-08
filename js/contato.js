@@ -2,7 +2,7 @@
 
 // Inicializa o EmailJS
 // Substitua "SEU_PUBLIC_KEY_AQUI" pelo seu PUBLIC KEY real do EmailJS
-emailjs.init("SEU_PUBLIC_KEY_AQUI");
+emailjs.init("RDwW0yW_JvDtyaYJ8");
 
 const form = document.getElementById("formContato");
 const msgStatus = document.getElementById("statusMsg");
@@ -25,7 +25,7 @@ if (form) {
         }
 
         emailjs
-            .send("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", params)
+            .send("service_3501eci", "template_ujcvft1", params)
             .then(() => {
                 msgStatus.textContent = "Mensagem enviada com sucesso!";
                 form.reset();

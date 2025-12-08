@@ -20,7 +20,7 @@
 
     <header class="cabeca" id="topo">
         <div class="header-inner">
-            <a href="#topo" class="logo-link">
+            <a class="logo-link">
                 <img class="logo" src="assets/logo.png" alt="Logo Etiquetas Online" height="56">
             </a>
 
@@ -31,16 +31,16 @@
 
             <nav class="navegacao" aria-label="Navegação principal">
                 <ul class="menu" id="menu-principal">
-                    <li><a href="#topo">Início</a></li>
+                    <li><a onclick="escrolarTopo()" href="#topo">Início</a></li>
                     <li><a href="#ofertas">Ofertas</a></li>
                     <li><a href="#produtos">Produtos</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
 
-            <a class="comprar btn-primaria" href="#marketplaces" >
-                Onde comprar
-            </a>
+            <button id="contraste" class="comprar btn-primaria" href="#" aria-label="Modo Alto Contraste">
+                Alto Contraste
+            </button>
         </div>
     </header>
 
@@ -77,7 +77,7 @@
                 <section class="cards-row" aria-label="Canais de compra">
                     <div class="card">
                         <img src="assets/ML.png" alt="Logo Mercado Livre" class="img-responsiva">
-                        <a class="comprar btn-secundaria" href="#" aria-label="Onde comprar no Mercado Livre">
+                        <a class="comprar btn-secundaria" href="https://www.mercadolivre.com.br/pagina/etiquetasonlinepapelaria" aria-label="Onde comprar no Mercado Livre">
                             Onde comprar
                         </a>
                     </div>
@@ -154,9 +154,10 @@
             <hr>
             <p>© <span id="currentYear"></span> Etiquetas Online. Todos os direitos reservados.</p>
         </div>
+
     </footer>
 
-    <!-- JS externos -->
+
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 
     <script src="js/ofertas.js"></script>
@@ -165,8 +166,20 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script src="js/contato.js"></script>
 
-    <!-- JS principal (responsividade, menu, carrossel, etc.) -->
     <script src="js/main.js"></script>
+
+    <script src="js/altoContraste.js"></script>
+
+    <script>
+        function escrolarTopo() {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+
 </body>
 
 </html>
