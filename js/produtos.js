@@ -1,103 +1,45 @@
 // js/produtos.js
 
-// Lista dos produtos (adicione, remova ou edite aqui)
-const produtos = [
-    {
-        img: "assets/default.png",
-        preco: "R$ 407,49",
-        parcelamento: "12x R$ 33,96 sem juros",
-        descricao: "Kit 10 Rls Etiqueta 10×5 100×50 Bopp Fosco + 5 Ribbon Misto Cor Branco"
-    },
-    {
-        img: "assets/default.png",
-        preco: "R$ 189,99",
-        parcelamento: "12x R$ 15,83 sem juros",
-        descricao: "Etiqueta Térmica 40×30 – 30 Rolos"
-    },
-    {
-        img: "assets/default.png",
-        preco: "R$ 319,90",
-        parcelamento: "12x R$ 26,65 sem juros",
-        descricao: "Etiquetas 50×50 Bopp Fosco – Caixa com 20 Rolos"
-    },
-    {
-        img: "assets/default.png",
-        preco: "R$ 259,00",
-        parcelamento: "12x R$ 21,58 sem juros",
-        descricao: "Ribbon Misto 110mm x 74m – Caixa com 10"
-    },
-    {
-        img: "assets/default.png",
-        preco: "R$ 149,00",
-        parcelamento: "12x R$ 12,41 sem juros",
-        descricao: "Etiqueta 30×20 Térmica – 40 Rolos"
-    },
-    {
-        img: "assets/default.png",
-        preco: "R$ 579,00",
-        parcelamento: "12x R$ 48,25 sem juros",
-        descricao: "Kit Impressão Zebra + Etiquetas + Ribbon"
-    },
-    {
-        img: "assets/default.png",
-        preco: "R$ 199,00",
-        parcelamento: "12x R$ 16,58 sem juros",
-        descricao: "Etiquetas 40×60 Bopp – 16 Rolos"
-    },
-    {
-        img: "assets/default.png",
-        preco: "R$ 349,90",
-        parcelamento: "12x R$ 29,15 sem juros",
-        descricao: "Etiquetas 80×50 Fosco – 12 Rolos"
-    },
-    {
-        img: "assets/default.png",
-        preco: "R$ 279,90",
-        parcelamento: "12x R$ 23,32 sem juros",
-        descricao: "Ribbon Premium 110mm x 300m"
-    },
-    {
-        img: "assets/default.png",
-        preco: "R$ 159,00",
-        parcelamento: "12x R$ 13,25 sem juros",
-        descricao: "Etiqueta 50×30 Térmica – Pacote com 30"
-    },
-    {
-        img: "assets/default.png",
-        preco: "R$ 499,00",
-        parcelamento: "12x R$ 41,58 sem juros",
-        descricao: "Kit 30 Rolos Etiqueta 60×40 Bopp Fosco"
-    },
-    {
-        img: "assets/default.png",
-        preco: "R$ 229,00",
-        parcelamento: "12x R$ 19,08 sem juros",
-        descricao: "Etiquetas 30×10 – 50 Rolos"
-    }
-];
+// COLE AQUI O LINK CSV DA ABA PRODUTOS QUE VOCÊ GEROU NO GOOGLE SHEETS
+const URL_PLANILHA_PRODUTOS = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTwy8XI9WN6sRDhaJ0kInU3f0bpYxFTwzOfjTQETmPNEgiS6iSMll09cyOAuU8v2vKYRUSen__v7lL3/pub?gid=0&single=true&output=csv';
 
-// Função para montar os cards dinamicamente
 function carregarProdutos() {
     const container = document.querySelector(".produtos-cards");
     if (!container) return;
 
-    container.innerHTML = "";
+    // Usa o PapaParse para ler o CSV
+    Papa.parse(URL_PLANILHA_PRODUTOS, {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: function(resultados) {
+            const produtos = resultados.data;
+            container.innerHTML = ""; // Limpa o container
 
-    produtos.forEach((prod) => {
-        const card = document.createElement("article");
-        card.classList.add("card");
-        card.setAttribute("aria-label", `Produto: ${prod.descricao}`);
+            produtos.forEach((prod) => {
+                // Verifica se a linha tem conteúdo mínimo para evitar erros
+                if(!prod.preco || !prod.descricao) return;
 
-        card.innerHTML = `
-            <img src="${prod.img}"
-                 alt="Imagem ilustrativa do produto: ${prod.descricao}"
-                 class="img-responsiva">
-            <h3>${prod.preco}</h3>
-            <p style="color:#00A650; font-weight:600;">${prod.parcelamento}</p>
-            <p>${prod.descricao}</p>
-        `;
+                const card = document.createElement("article");
+                card.classList.add("card");
+                card.setAttribute("aria-label", `Produto: ${prod.descricao}`);
 
-        container.appendChild(card);
+                card.innerHTML = `
+                    <img src="${prod.img || 'assets/default.png'}" 
+                         alt="Imagem ilustrativa do produto: ${prod.descricao}" 
+                         class="img-responsiva">
+                    <h3>${prod.preco}</h3>
+                    <p style="color:#00A650; font-weight:600;">${prod.parcelamento}</p>
+                    <p>${prod.descricao}</p>
+                `;
+
+                container.appendChild(card);
+            });
+        },
+        error: function(err) {
+            console.error("Erro ao carregar produtos:", err);
+            container.innerHTML = "<p>Não foi possível carregar os produtos no momento.</p>";
+        }
     });
 }
 

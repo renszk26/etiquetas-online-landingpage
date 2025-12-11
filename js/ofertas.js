@@ -1,59 +1,47 @@
 // js/ofertas.js
 
-// Lista de produtos (adicione, remova ou edite aqui)
-const ofertas = [
-    {
-        img: "assets/default.png",
-        precoAntigo: "R$ 507,49",
-        precoAtual: "R$ 407,49",
-        descricao: "Kit 10 Rls Etiqueta 10×5 100×50 Bopp Fosco + 5 Ribbon Misto Cor Branco"
-    },
-    {
-        img: "assets/default.png",
-        precoAntigo: "R$ 489,90",
-        precoAtual: "R$ 389,90",
-        descricao: "Etiqueta Adesiva 50×30 Bopp Fosco 15 Rolos"
-    },
-    {
-        img: "assets/default.png",
-        precoAntigo: "R$ 299,00",
-        precoAtual: "R$ 219,00",
-        descricao: "Ribbon Cera 110mm x 70m Preto - Caixa com 10 unidades"
-    },
-    {
-        img: "assets/default.png",
-        precoAntigo: "R$ 189,99",
-        precoAtual: "R$ 129,99",
-        descricao: "Etiqueta Térmica 40×30 – 30 Rolos"
-    }
-];
+// COLE AQUI O LINK CSV DA ABA OFERTAS QUE VOCÊ GEROU NO GOOGLE SHEETS
+const URL_PLANILHA_OFERTAS = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTwy8XI9WN6sRDhaJ0kInU3f0bpYxFTwzOfjTQETmPNEgiS6iSMll09cyOAuU8v2vKYRUSen__v7lL3/pub?gid=1498650994&single=true&output=csv';
 
-// Função para montar os cards dinamicamente
 function carregarOfertas() {
     const container = document.querySelector(".ofertas-cards");
     if (!container) return;
 
-    container.innerHTML = "";
+    Papa.parse(URL_PLANILHA_OFERTAS, {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: function(resultados) {
+            const ofertas = resultados.data;
+            container.innerHTML = "";
 
-    ofertas.forEach((produto) => {
-        const card = document.createElement("article");
-        card.classList.add("card");
-        card.setAttribute("aria-label", `Oferta: ${produto.descricao}`);
+            ofertas.forEach((produto) => {
+                if(!produto.precoAtual || !produto.descricao) return;
 
-        card.innerHTML = `
-            <img src="${produto.img}"
-                 alt="Imagem ilustrativa do produto: ${produto.descricao}"
-                 class="img-responsiva">
-            <p>
-                <span style="color:#00A650; text-decoration: line-through;">
-                    ${produto.precoAntigo}
-                </span>
-            </p>
-            <h3>${produto.precoAtual}</h3>
-            <p>${produto.descricao}</p>
-        `;
+                const card = document.createElement("article");
+                card.classList.add("card");
+                card.setAttribute("aria-label", `Oferta: ${produto.descricao}`);
 
-        container.appendChild(card);
+                card.innerHTML = `
+                    <img src="${produto.img || 'assets/default.png'}" 
+                         alt="Imagem ilustrativa do produto: ${produto.descricao}" 
+                         class="img-responsiva">
+                    <p>
+                        <span style="color:#00A650; text-decoration: line-through;">
+                            ${produto.precoAntigo}
+                        </span>
+                    </p>
+                    <h3>${produto.precoAtual}</h3>
+                    <p>${produto.descricao}</p>
+                `;
+
+                container.appendChild(card);
+            });
+        },
+        error: function(err) {
+            console.error("Erro ao carregar ofertas:", err);
+            container.innerHTML = "<p>Não foi possível carregar as ofertas no momento.</p>";
+        }
     });
 }
 
