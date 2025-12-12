@@ -278,6 +278,12 @@ max-width: 100%; /* Permite ocupar a tela toda */
     align-items: center;
     justify-content: space-between;
     height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.1);
+
 }
 .card img {
     margin-bottom: 16px;
