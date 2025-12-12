@@ -57,6 +57,7 @@ body.alto-contraste .mensagem,
 body.alto-contraste header,
 body.alto-contraste footer,
 body.alto-contraste input,
+body.alto-contraste .marketplace-cards,
 body.alto-contraste textarea {
     border: 2px solid #FFFF00;
     background-color: #000000 !important;
@@ -68,12 +69,13 @@ body.alto-contraste .btn-secundaria {
     background-color: #FFFF00 !important; /* Fundo amarelo */
     color: #000000 !important;             /* Texto preto para leitura */
     font-weight: 800;
-    border: 2px solid #FFFFFF !important;  /* Borda branca para destaque extra */
+    border: 2px solid #000000 !important;  /* Borda branca para destaque extra */
 }
 
 /* Ajuste para inputs de formulário */
 body.alto-contraste input,
-body.alto-contraste textarea {
+body.alto-contraste textarea, 
+body.alto-contraste .preco {
     color: #FFFF00;
 }
 
@@ -164,7 +166,7 @@ body {
 .menu a {
     color: var(--branco);
     font-weight: 600;
-    font-size: 16px;
+    font-size: 24px;
     transition: transform 0.2s ease, text-decoration 0.2s ease;
 }
 
@@ -224,12 +226,12 @@ body {
 
 /* CARROSSEL */
 .carrosel {
-    background-color: var(--azul-principal);
+    background-color: var(--preto);
 }
 
 .glide {
-    max-width: 1120px;
-    margin: 0 auto;
+max-width: 100%; /* Permite ocupar a tela toda */
+    margin: 0;
 }
 
 .glide__slide img {
@@ -268,7 +270,7 @@ body {
     width: 100%;
     max-width: clamp(200px, 42vw, 280px);
     padding: clamp(16px, 3vw, 24px) clamp(12px, 2.5vw, 16px);
-    text-align: center;
+    text-align: left;
     border-radius: 20px;
     box-shadow: 4px 4px 17px -4px rgba(11, 18, 21, 0.6);
     display: flex;
@@ -289,10 +291,16 @@ body {
     margin-top: 24px;
 }
 
+.preco {
+    color: #005C00;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
 /* Ofertas */
 .ofertas {
     background-color: var(--branco);
-    text-align: center;
+    text-align: left;
 }
 
 .ofertas-cards {
@@ -367,7 +375,7 @@ body {
 
 .campo-form label {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .mensagem input,

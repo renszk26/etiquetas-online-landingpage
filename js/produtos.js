@@ -25,11 +25,11 @@ function carregarProdutos() {
                 card.setAttribute("aria-label", `Produto: ${prod.descricao}`);
 
                 card.innerHTML = `
-                    <img src="${prod.img || 'assets/default.png'}" 
+                    <img src="${prod.img || 'assets/padrao.png'}" 
                          alt="Imagem ilustrativa do produto: ${prod.descricao}" 
                          class="img-responsiva">
                     <h3>${prod.preco}</h3>
-                    <p style="color:#00A650; font-weight:600;">${prod.parcelamento}</p>
+                    <p style="color:#005C00; font-weight:600;">${prod.parcelamento}</p>
                     <p>${prod.descricao}</p>
                 `;
 

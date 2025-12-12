@@ -20,7 +20,7 @@ if (form) {
 
         // Validação simples extra (além do required no HTML)
         if (!params.nome || !params.email || !params.mensagem) {
-            msgStatus.textContent = "Por favor, preencha todos os campos obrigatórios.";
+            msgStatus.textContent = "Por favor, preencha todos os campos obrigatórios *.";
             return;
         }
 

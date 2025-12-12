@@ -23,11 +23,11 @@ function carregarOfertas() {
                 card.setAttribute("aria-label", `Oferta: ${produto.descricao}`);
 
                 card.innerHTML = `
-                    <img src="${produto.img || 'assets/default.png'}" 
+                    <img src="${produto.img || 'assets/padrao.png'}" 
                          alt="Imagem ilustrativa do produto: ${produto.descricao}" 
                          class="img-responsiva">
                     <p>
-                        <span style="color:#00A650; text-decoration: line-through;">
+                        <span class="preco";">
                             ${produto.precoAntigo}
                         </span>
                     </p>
