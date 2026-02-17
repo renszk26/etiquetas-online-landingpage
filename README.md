@@ -1,3 +1,3 @@
 # etiquetas-online-landingpage
-Projeto para criação de uma landingpage para a empresa Etiquetas Online
-![Logo da etiquetas online](https://etiquetas-online-v2.tiiny.site/Etiquetas-Online-v2.svg)
+Projeto desenvolvido para uma empresa real de São José do Rio Preto - SP em conjunto com minha equipe do SENAI <3
+<img src="[image-url](https://etiquetas-online-v2.tiiny.site/Etiquetas-Online-v2.svg)" alt="Alt Text" style="width:50%; height:auto;">
